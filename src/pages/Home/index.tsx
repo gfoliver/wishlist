@@ -35,7 +35,9 @@ const Home: React.FC = () => {
     const handleSubmit = useCallback((e) => {
         e.preventDefault();
 
-        getLinkPreview(link).then(response => {
+        getLinkPreview(link, {
+            proxyUrl: 'https://cors-anywhere.herokuapp.com/'
+        }).then(response => {
             setProducts(products => [...products, response as IProduct]);
             setLink('');
             addToast('Product added to wishlist! :D', {appearance: 'success'});
